@@ -13,8 +13,6 @@
   let lightboxIndex = -1;
 
   const toolLabels = { midjourney: "Midjourney", chatgpt: "ChatGPT image", "nano-banana": "Nano Banana" };
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
 
   function formatLabel(key) {
     return (formatsInfo[key] && formatsInfo[key].label) || key;
@@ -77,32 +75,50 @@
   const styleKeys = [...new Set(works.filter(w => w.style).map(w => w.style))].sort();
   const toolKeys = [...new Set(works.map(w => w.tool))].sort();
 
-  buildChips("chips-format", "format", formatKeys, formatLabel);
+  function buildTabs() {
+    const box = document.getElementById("tabs-format");
+    box.innerHTML = "";
+    ["all"].concat(formatKeys).forEach(value => {
+      const tab = document.createElement("button");
+      tab.className = "tab" + (value === "all" ? " active" : "");
+      tab.textContent = value === "all" ? "All" : formatLabel(value);
+      tab.dataset.value = value;
+      box.appendChild(tab);
+    });
+    box.addEventListener("click", event => {
+      const tab = event.target.closest(".tab");
+      if (!tab) return;
+      state.format = tab.dataset.value;
+      box.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t === tab));
+      render();
+    });
+  }
+
+  buildTabs();
   buildChips("chips-topic", "topic", topicKeys, t => t);
   buildChips("chips-style", "style", styleKeys, s => s);
   buildChips("chips-tool", "tool", toolKeys, t => toolLabels[t] || t);
+
+  const filtersToggle = document.getElementById("filters-toggle");
+  const filtersPanel = document.getElementById("filters-panel");
+  filtersToggle.addEventListener("click", () => {
+    const open = filtersPanel.hidden;
+    filtersPanel.hidden = !open;
+    filtersToggle.classList.toggle("open", open);
+    filtersToggle.setAttribute("aria-expanded", String(open));
+  });
 
   /* ---------- justified wall ---------- */
 
   const wall = document.getElementById("wall");
   const empty = document.getElementById("empty");
-  const GAP = 8;
+  const GAP = 20;
 
   function targetRowHeight() {
     const w = wall.clientWidth;
-    if (w < 560) return 170;
-    if (w < 960) return 220;
-    return 260;
-  }
-
-  function monthKey(dateStr) {
-    return String(dateStr).slice(0, 7);
-  }
-
-  function monthTitle(key) {
-    const parts = key.split("-");
-    const monthIndex = parseInt(parts[1], 10) - 1;
-    return (monthNames[monthIndex] || parts[1]) + " " + parts[0];
+    if (w < 560) return 210;
+    if (w < 960) return 260;
+    return 320;
   }
 
   function buildTile(work, index, height) {
@@ -115,8 +131,7 @@
     tile.style.width = Math.round(height * ratio) + "px";
     tile.style.height = Math.round(height) + "px";
     tile.innerHTML =
-      '<img loading="lazy" src="' + work.thumb + '" alt="' + escapeHtml(work.title) + '">' +
-      (work.featured ? '<span class="star" aria-hidden="true"></span>' : "") +
+      '<img loading="' + (index < 8 ? "eager" : "lazy") + '" src="' + work.thumb + '" alt="' + escapeHtml(work.title) + '">' +
       '<figcaption class="wash"><span class="wash-take">' +
       escapeHtml(work.takeaway || work.title) +
       '</span><span class="wash-meta">' + escapeHtml(formatLabel(work.format)) + " · " +
@@ -165,28 +180,7 @@
     );
     wall.innerHTML = "";
     empty.hidden = visible.length > 0;
-
-    let index = 0;
-    let currentMonth = null;
-    let group = [];
-
-    function flushGroup() {
-      if (!group.length) return;
-      const divider = document.createElement("p");
-      divider.className = "month";
-      divider.textContent = monthTitle(currentMonth);
-      wall.appendChild(divider);
-      layoutRows(group, index - group.length, wall);
-      group = [];
-    }
-
-    visible.forEach(work => {
-      const key = monthKey(work.date);
-      if (key !== currentMonth) { flushGroup(); currentMonth = key; }
-      group.push(work);
-      index += 1;
-    });
-    flushGroup();
+    layoutRows(visible, 0, wall);
 
     if (!reducedMotion) {
       const tiles = wall.querySelectorAll(".tile");

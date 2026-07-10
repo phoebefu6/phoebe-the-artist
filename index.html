@@ -7,13 +7,12 @@
 <meta name="description" content="Phoebe Fu's gallery of AI-made images that explain data and AI: decoded concepts, teaching comics, logofolio, style experiments. Every prompt published.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site/style.css?v=7964c64e">
-<meta name="theme-color" content="#0E0F12">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230E0F12'/><rect width='100' height='14' fill='%23A855F7'/><circle cx='50' cy='60' r='26' fill='%23F2EFF7'/><circle cx='60' cy='52' r='9' fill='%23FDBA74'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site/style.css?v=60733dec">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><circle cx='50' cy='50' r='30' fill='none' stroke='%23111111' stroke-width='10'/><circle cx='50' cy='50' r='9' fill='%23111111'/></svg>">
 </head>
 <body>
-<div class="sweep" aria-hidden="true"></div>
 
 <header class="bar">
   <div class="brand">
@@ -26,8 +25,12 @@
     <a href="https://www.linkedin.com/in/phoebe-fu-50168895/" rel="me">LinkedIn</a></p>
 </header>
 
-<nav class="filters" aria-label="Gallery filters">
-  <div class="filter-row"><span class="filter-label">Format</span><div class="chips" id="chips-format"></div></div>
+<nav class="tabs-bar" aria-label="Format tabs">
+  <div class="tabs" id="tabs-format"></div>
+  <button class="filters-toggle" id="filters-toggle" aria-expanded="false">Filters</button>
+</nav>
+
+<nav class="filters" id="filters-panel" aria-label="More filters" hidden>
   <div class="filter-row"><span class="filter-label">Topic</span><div class="chips" id="chips-topic"></div></div>
   <div class="filter-row"><span class="filter-label">Style</span><div class="chips" id="chips-style"></div></div>
   <div class="filter-row"><span class="filter-label">Tool</span><div class="chips" id="chips-tool"></div></div>
@@ -66,6 +69,6 @@
 </div>
 
 <script src="data/works.js?v=3389c775"></script>
-<script src="site/app.js?v=30eef468"></script>
+<script src="site/app.js?v=e500f884"></script>
 </body>
 </html>
