@@ -125,7 +125,7 @@ def write_readme(works: list[dict], taxonomy: dict) -> None:
         "",
         f"**{len(works)} works · {len(styles)} styles · {len(tools)} tools · every prompt is yours to copy**",
         "",
-        "🖼️ **[Enter the gallery →](https://phoebefu6.github.io/phoebe-the-artist/)**",
+        "🖼️ **[Enter the gallery →](https://phoebefu6.github.io/sketch-ideas-with-phoebe/)**",
         "",
         "## Latest",
         "",

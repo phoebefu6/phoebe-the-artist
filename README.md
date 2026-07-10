@@ -6,7 +6,7 @@ simplified into images anyone can act on. Every prompt published.
 
 **3 works · 2 styles · 3 tools · every prompt is yours to copy**
 
-🖼️ **[Enter the gallery →](https://phoebefu6.github.io/phoebe-the-artist/)**
+🖼️ **[Enter the gallery →](https://phoebefu6.github.io/sketch-ideas-with-phoebe/)**
 
 ## Latest
 
