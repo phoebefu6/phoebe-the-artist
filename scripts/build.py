@@ -113,6 +113,19 @@ def write_data(works: list[dict], taxonomy: dict) -> None:
     )
 
 
+def stamp_assets() -> None:
+    """Cache-bust asset URLs in index.html so browsers never mix site versions."""
+    import hashlib
+    import re
+
+    index_path = ROOT / "index.html"
+    html = index_path.read_text()
+    for asset in ("site/style.css", "site/app.js", "data/works.js"):
+        digest = hashlib.md5((ROOT / asset).read_bytes()).hexdigest()[:8]
+        html = re.sub(rf'{re.escape(asset)}(\?v=\w+)?', f"{asset}?v={digest}", html)
+    index_path.write_text(html)
+
+
 def write_readme(works: list[dict], taxonomy: dict) -> None:
     styles = sorted({work["style"] for work in works if work["style"]})
     tools = sorted({work["tool"] for work in works})
@@ -172,6 +185,7 @@ def main() -> None:
     works = scan_works()
     write_data(works, taxonomy)
     write_readme(works, taxonomy)
+    stamp_assets()
     styles = {work["style"] for work in works if work["style"]}
     print(f"Built: {len(works)} works, {len(styles)} styles → data/works.js, README.md")
 
