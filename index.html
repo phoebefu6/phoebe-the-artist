@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worth a thousand words - data and AI, explained in pictures</title>
+<meta name="description" content="Phoebe Fu's gallery of AI-made images that explain data and AI: decoded concepts, teaching comics, logofolio, style experiments. Every prompt published.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><rect width='100' height='14' fill='%239333EA'/><circle cx='50' cy='60' r='26' fill='%232A1B3D'/><circle cx='60' cy='52' r='9' fill='%23FDBA74'/></svg>">
+</head>
+<body>
+<div class="sweep" aria-hidden="true"></div>
+
+<header class="hero">
+  <p class="kicker reveal">Worth a thousand words</p>
+  <h1 class="reveal">Data and AI, <em>explained in pictures</em></h1>
+  <p class="sub reveal">I lead data teams by day and draw what's hard to say - complicated business,
+  data, and data people, simplified into images anyone can act on. Every prompt published,
+  yours to copy.</p>
+  <div class="stats reveal">
+    <div class="stat"><span class="num" id="stat-works">0</span><span class="lbl">works</span></div>
+    <div class="stat"><span class="num" id="stat-styles">0</span><span class="lbl">styles tried</span></div>
+    <div class="stat"><span class="num" id="stat-prompts">0</span><span class="lbl">prompts published</span></div>
+  </div>
+</header>
+
+<nav class="filters reveal" aria-label="Gallery filters">
+  <div class="filter-row"><span class="filter-label">Topic</span><div class="chips" id="chips-series"></div></div>
+  <div class="filter-row"><span class="filter-label">Style</span><div class="chips" id="chips-style"></div></div>
+  <div class="filter-row"><span class="filter-label">Tool</span><div class="chips" id="chips-tool"></div></div>
+</nav>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Nothing here yet - this combination is waiting for its first image.</p>
+</main>
+
+<footer class="foot">
+  <p><strong>Phoebe Fu</strong> - data and AI leader, visual explainer.</p>
+  <p>New image most days. Made with Midjourney, ChatGPT image, Nano Banana - and strong opinions about data.</p>
+  <p><a href="https://www.linkedin.com/in/phoebefu" rel="me">LinkedIn</a> ·
+     <a href="https://github.com/phoebefu6/phoebe-the-artist">Repo + prompts</a> ·
+     <a href="https://phoebefu6.github.io/phoebe-the-builder">phoebe-the-builder</a></p>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork detail" hidden>
+  <button class="lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous work">&larr;</button>
+  <div class="lb-body">
+    <figure class="lb-figure"><img id="lb-img" src="" alt=""></figure>
+    <aside class="lb-card">
+      <p class="kicker" id="lb-series"></p>
+      <h2 id="lb-title"></h2>
+      <p class="lb-takeaway" id="lb-takeaway"></p>
+      <div class="lb-meta" id="lb-meta"></div>
+      <div class="lb-recipe">
+        <p class="recipe-label">The recipe</p>
+        <p class="lb-prompt" id="lb-prompt"></p>
+        <button class="copy-btn" id="lb-copy">Copy prompt</button>
+      </div>
+    </aside>
+  </div>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next work">&rarr;</button>
+</div>
+
+<script src="data/works.js"></script>
+<script src="site/app.js"></script>
+</body>
+</html>
