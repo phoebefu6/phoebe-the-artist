@@ -12,7 +12,14 @@
   let visible = [];
   let lightboxIndex = -1;
 
-  const toolLabels = { midjourney: "Midjourney", chatgpt: "ChatGPT image", "nano-banana": "Nano Banana" };
+  const toolLabels = {
+    midjourney: "Midjourney",
+    chatgpt: "ChatGPT image",
+    "chatgpt-image": "ChatGPT image",
+    dalle: "DALL-E",
+    openai: "OpenAI image",
+    "nano-banana": "Nano Banana"
+  };
 
   function formatLabel(key) {
     return (formatsInfo[key] && formatsInfo[key].label) || key;
@@ -69,7 +76,7 @@
     });
   }
 
-  const formatKeys = Object.keys(formatsInfo).filter(k => works.some(w => w.format === k));
+  const formatKeys = Object.keys(formatsInfo);
   works.forEach(w => { if (w.format && !formatKeys.includes(w.format)) formatKeys.push(w.format); });
   const topicKeys = [...new Set(works.flatMap(w => w.topic || []))].sort();
   const styleKeys = [...new Set(works.filter(w => w.style).map(w => w.style))].sort();
@@ -220,6 +227,9 @@
     const takeawayEl = document.getElementById("lb-takeaway");
     takeawayEl.textContent = work.takeaway || "";
     takeawayEl.style.display = work.takeaway ? "" : "none";
+    const conceptEl = document.getElementById("lb-concept");
+    conceptEl.textContent = work.concept || "";
+    conceptEl.style.display = work.concept ? "" : "none";
     const meta = document.getElementById("lb-meta");
     meta.innerHTML = "";
     [toolLabels[work.tool] || work.tool].concat(work.topic || []).forEach(tag => {

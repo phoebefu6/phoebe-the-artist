@@ -167,6 +167,17 @@ main { max-width: 1320px; margin: 0 auto; padding: 24px 24px 96px; }
 }
 .lb-card h2 { font-family: "Space Grotesk", "Inter", sans-serif; font-size: 24px; font-weight: 500; line-height: 1.25; margin-top: 8px; }
 .lb-takeaway { margin-top: 14px; font-size: 15.5px; font-weight: 400; color: var(--ink); line-height: 1.55; }
+.lb-concept {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.lb-concept::before {
+  content: "Key concept: ";
+  color: var(--ink);
+  font-weight: 500;
+}
 
 .lb-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
 .lb-meta span {

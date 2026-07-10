@@ -4,6 +4,7 @@ tool: nano-banana
 format: comic
 topic: [forecasting]
 style: three-panel strip
+concept: "Forecast uncertainty and presentation bias in business planning."
 prompt: "three panel minimalist comic: panel 1 a jagged line going down, panel 2 a flat wobbly line, panel 3 the same line drawn straight up by hand with a sun in the corner, flat colors"
 takeaway: "Forecasts bend toward whoever presents last."
 featured: false

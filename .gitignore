@@ -5,3 +5,6 @@ __pycache__/
 # inspiration drop zone - never published
 inbox/*
 !inbox/.gitkeep
+
+# private reference notes, source links, and screenshots
+private/

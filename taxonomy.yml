@@ -10,6 +10,18 @@ formats:
   comic:
     label: Comic
     blurb: Strips that teach a real lesson.
+  poster:
+    label: Poster
+    blurb: One bold visual metaphor for a data/AI idea.
+  carousel:
+    label: Carousel
+    blurb: Multi-slide explainers for concepts that need pacing.
+  card:
+    label: Card
+    blurb: A compact shareable image with one sharp idea.
+  cheatsheet:
+    label: Cheatsheet
+    blurb: A dense but readable reference for data/AI people.
   ironic-graph:
     label: Ironic graph
     blurb: Charts that tell the truth by exaggerating it.

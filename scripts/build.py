@@ -89,6 +89,7 @@ def scan_works() -> list[dict]:
                 "topic": [str(t) for t in (meta.get("topic") or [])],
                 "style": str(meta.get("style") or ""),
                 "inspired_by": str(meta.get("inspired_by") or ""),
+                "concept": str(meta.get("concept") or ""),
                 "prompt": str(meta.get("prompt") or ""),
                 "takeaway": str(meta.get("takeaway") or ""),
                 "featured": bool(meta.get("featured", False)),
@@ -127,8 +128,8 @@ def write_catalog(works: list[dict], taxonomy: dict) -> None:
         f"**{len(works)} works** · formats: {len({w['format'] for w in works})}"
         f" · topics: {len(topics)} · styles: {len(styles)}",
         "",
-        "| Date | Title | Format | Topics | Style | Tool | Takeaway | Files |",
-        "|------|-------|--------|--------|-------|------|----------|-------|",
+        "| Date | Title | Format | Topics | Style | Tool | Key concept | Takeaway | Files |",
+        "|------|-------|--------|--------|-------|------|-------------|----------|-------|",
     ]
     for w in works:
         fmt = formats.get(w["format"], {}).get("label", w["format"])
@@ -139,6 +140,7 @@ def write_catalog(works: list[dict], taxonomy: dict) -> None:
             f"| {', '.join(w['topic']) or '-'} "
             f"| {w['style'] or '-'} "
             f"| {w['tool']} "
+            f"| {w['concept'] or '-'} "
             f"| {w['takeaway'] or '-'} "
             f"| [image]({w['full']}) · [folder](works/{w['id']}/) |"
         )
@@ -207,10 +209,10 @@ def write_readme(works: list[dict], taxonomy: dict) -> None:
         "",
         "## How this repo works",
         "",
-        "- `works/` holds one folder per image: the original, a 7-line `meta.yml`, an auto thumbnail.",
-        "- `scripts/build.py` regenerates thumbnails, `data/works.js`, and this README.",
-        "- A GitHub Action rebuilds and redeploys the gallery on every push.",
-        "- New work = drop one folder, push. Nothing else is ever edited by hand.",
+        "- `works/` holds one folder per image: the original, `meta.yml`, optional `idea.md`, and an auto thumbnail.",
+        "- `scripts/build.py` regenerates thumbnails, `data/works.js`, `CATALOG.md`, and this README.",
+        "- Private inspiration notes live in ignored folders like `inbox/` or `private/`.",
+        "- New work = drop one folder, run the build, push. Nothing else is ever edited by hand.",
         "",
         "Made with Midjourney, ChatGPT image, Nano Banana - and strong opinions about data.",
         "",

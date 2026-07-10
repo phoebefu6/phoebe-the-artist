@@ -17,6 +17,10 @@ simplified into images anyone can act on. Every prompt published.
 - **Infographic** (1) - A complex data/AI concept, explained in one image.
 - **Chart** (0) - One chart, one idea - single-chart experiments, d3.js spirit. Never a dashboard.
 - **Comic** (1) - Strips that teach a real lesson.
+- **Poster** (0) - One bold visual metaphor for a data/AI idea.
+- **Carousel** (0) - Multi-slide explainers for concepts that need pacing.
+- **Card** (0) - A compact shareable image with one sharp idea.
+- **Cheatsheet** (0) - A dense but readable reference for data/AI people.
 - **Ironic graph** (0) - Charts that tell the truth by exaggerating it.
 - **Illustration** (0) - Data and AI ideas as scenes and characters.
 - **Logo** (1) - Marks and identity for data/AI things.
@@ -24,9 +28,9 @@ simplified into images anyone can act on. Every prompt published.
 
 ## How this repo works
 
-- `works/` holds one folder per image: the original, a 7-line `meta.yml`, an auto thumbnail.
-- `scripts/build.py` regenerates thumbnails, `data/works.js`, and this README.
-- A GitHub Action rebuilds and redeploys the gallery on every push.
-- New work = drop one folder, push. Nothing else is ever edited by hand.
+- `works/` holds one folder per image: the original, `meta.yml`, optional `idea.md`, and an auto thumbnail.
+- `scripts/build.py` regenerates thumbnails, `data/works.js`, `CATALOG.md`, and this README.
+- Private inspiration notes live in ignored folders like `inbox/` or `private/`.
+- New work = drop one folder, run the build, push. Nothing else is ever edited by hand.
 
 Made with Midjourney, ChatGPT image, Nano Banana - and strong opinions about data.

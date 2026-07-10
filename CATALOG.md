@@ -5,11 +5,11 @@ Search this file to find anything ever published (Cmd+F a topic, style, tool, or
 
 **3 works** · formats: 3 · topics: 4 · styles: 2
 
-| Date | Title | Format | Topics | Style | Tool | Takeaway | Files |
-|------|-------|--------|--------|-------|------|----------|-------|
-| 2026-07-10 | The forecast, quarterly (sample - replace with real work) | Comic | forecasting | three-panel strip | nano-banana | Forecasts bend toward whoever presents last. | [image](works/2026-07-10-sample-comic-the-forecast/full.png) · [folder](works/2026-07-10-sample-comic-the-forecast/) |
-| 2026-07-09 | Half-truth dashboard mark (sample - replace with real work) | Logo | metrics | flat geometric | chatgpt | Every dashboard shows half the truth. Good design admits which half. | [image](works/2026-07-09-sample-logo-half-truth/full.png) · [folder](works/2026-07-09-sample-logo-half-truth/) |
-| 2026-07-08 | Lake or swamp (sample - replace with real work) | Infographic | data quality, governance | flat geometric | midjourney | A data lake without ownership is just a swamp with better marketing. | [image](works/2026-07-08-sample-decoded-data-swamp/full.png) · [folder](works/2026-07-08-sample-decoded-data-swamp/) |
+| Date | Title | Format | Topics | Style | Tool | Key concept | Takeaway | Files |
+|------|-------|--------|--------|-------|------|-------------|----------|-------|
+| 2026-07-10 | The forecast, quarterly (sample - replace with real work) | Comic | forecasting | three-panel strip | nano-banana | Forecast uncertainty and presentation bias in business planning. | Forecasts bend toward whoever presents last. | [image](works/2026-07-10-sample-comic-the-forecast/full.png) · [folder](works/2026-07-10-sample-comic-the-forecast/) |
+| 2026-07-09 | Half-truth dashboard mark (sample - replace with real work) | Logo | metrics | flat geometric | chatgpt | Metric framing: every dashboard reveals some truth and hides some context. | Every dashboard shows half the truth. Good design admits which half. | [image](works/2026-07-09-sample-logo-half-truth/full.png) · [folder](works/2026-07-09-sample-logo-half-truth/) |
+| 2026-07-08 | Lake or swamp (sample - replace with real work) | Infographic | data quality, governance | flat geometric | midjourney | Data governance: ownership, quality, and stewardship decide whether a lake becomes useful or stagnant. | A data lake without ownership is just a swamp with better marketing. | [image](works/2026-07-08-sample-decoded-data-swamp/full.png) · [folder](works/2026-07-08-sample-decoded-data-swamp/) |
 
 ## Prompts (full recipes)
 
