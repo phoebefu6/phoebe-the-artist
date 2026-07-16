@@ -34,3 +34,6 @@ formats:
   style-study:
     label: Style study
     blurb: The sketchbook - mimicking a beautiful style to learn it.
+  cheatsheet:
+    label: Cheatsheet
+    blurb: One page, 80% of what matters - a topic distilled and designed to keep.

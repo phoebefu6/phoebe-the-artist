@@ -1,0 +1,9 @@
+title: RAG vs Fine-tuning vs Prompt-tuning
+date: 2026-07-16
+tool: html-render
+format: cheatsheet
+topic: [llm optimization, rag, fine-tuning, ai strategy]
+style: blueprint ledger
+prompt: "Blueprint Ledger style-DNA - deep blueprint indigo (#1f3a5f) on warm paper, Georgia display + mono spec labels, thin ruled hairlines. Hero: four LLM levers as blueprint line-art (prompt box, RAG retrieval circle, fine-tune dial, soft-prompt vectors). Rendered SVG, not diffusion."
+takeaway: "Fine-tuning teaches a skill; RAG supplies facts. Default to prompt + RAG - fine-tune only the pipelines that prove they need it."
+featured: false

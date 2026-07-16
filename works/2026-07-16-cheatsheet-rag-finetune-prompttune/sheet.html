@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RAG vs Fine-tuning vs Prompt-tuning</title>
+<style>
+/* ============ STYLE-DNA: Blueprint Ledger (002) ============ */
+:root {
+  --ink: #141821;
+  --paper: #fdfdfb;
+  --accent: #1f3a5f;
+  --accent-soft: #eaf0f7;
+  --rule: #d5dde8;
+  --font-display: "Georgia", "Times New Roman", serif;
+  --font-body: -apple-system, "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --fs-base: 11px;
+  --lh: 1.4;
+  --gap: 11px;
+}
+/* ============ LOCKED LAYOUT ============ */
+@page { size: A4 portrait; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 794px; }
+body {
+  width: 794px; height: 1123px; overflow: hidden;
+  background: var(--paper); color: var(--ink);
+  font: var(--fs-base)/var(--lh) var(--font-body);
+  padding: 24px 26px 18px; display: flex; flex-direction: column;
+}
+header.sheet { display: flex; gap: 16px; align-items: flex-end; border-bottom: 3px solid var(--ink); padding-bottom: 9px; margin-bottom: var(--gap); }
+header.sheet .titleblock { flex: 1; }
+header.sheet .kicker { font: 700 8.5px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+header.sheet h1 { font: 800 27px/1.02 var(--font-display); letter-spacing: -0.5px; }
+header.sheet .subtitle { font-size: 9.5px; color: #6b6168; margin-top: 4px; }
+.hero { height: 88px; overflow: hidden; margin-bottom: var(--gap); border: 1.5px solid var(--ink); }
+.hero svg { width: 100%; height: 100%; display: block; }
+main.cols { flex: 1; column-count: 3; column-gap: calc(var(--gap) + 2px); overflow: hidden; }
+section { break-inside: avoid; margin-bottom: var(--gap); }
+h2 { font: 700 11px/1.2 var(--font-body); letter-spacing: 0.8px; text-transform: uppercase; color: var(--paper); background: var(--accent); padding: 3px 7px; margin-bottom: 5px; }
+h3 { font: 700 calc(var(--fs-base) + 0.5px)/1.25 var(--font-body); color: var(--accent); margin: 5px 0 2px; }
+p { margin-bottom: 3px; }
+ul { padding-left: 12px; margin-bottom: 3px; }
+li { margin-bottom: 1.5px; }
+strong { color: var(--accent); }
+code, pre { font-family: var(--font-mono); font-size: calc(var(--fs-base) - 0.5px); background: var(--accent-soft); }
+code { padding: 0.5px 3px; }
+pre { padding: 5px 7px; margin-bottom: 4px; border-left: 2.5px solid var(--accent); overflow: hidden; white-space: pre-wrap; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 4px; font-size: calc(var(--fs-base) - 0.5px); }
+th { text-align: left; border-bottom: 1.5px solid var(--ink); padding: 2px 4px; font-weight: 700; }
+td { border-bottom: 0.5px solid var(--rule); padding: 2px 4px; vertical-align: top; }
+.callout { border: 1.5px solid var(--accent); background: var(--accent-soft); padding: 5px 8px; margin-bottom: 4px; }
+.callout .label { font: 700 8px/1 var(--font-body); letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
+footer.sheet { border-top: 2px solid var(--ink); margin-top: 4px; padding-top: 5px; display: flex; justify-content: space-between; font-size: 8.5px; color: #6b6168; }
+footer.sheet .legend em { font-style: normal; color: var(--accent); }
+.tag { font: 700 7.5px/1 var(--font-mono); color: var(--accent); border: 1px solid var(--accent); padding: 1px 3px; border-radius: 2px; }
+</style>
+</head>
+<body>
+  <header class="sheet">
+    <div class="titleblock">
+      <div class="kicker">WORTH A THOUSAND WORDS · CHEATSHEET 001</div>
+      <h1>RAG vs Fine-tuning vs Prompt-tuning</h1>
+      <div class="subtitle">Four levers to make an LLM do your job - and when to pull each · 2026-07-16</div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <svg viewBox="0 0 760 88" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="760" height="88" fill="#eaf0f7"/>
+      <g stroke="#c3d0e0" stroke-width="0.5">
+        <path d="M0 22H760M0 44H760M0 66H760"/>
+        <path d="M95 0V88M190 0V88M285 0V88M380 0V88M475 0V88M570 0V88M665 0V88"/>
+      </g>
+      <g fill="none" stroke="#1f3a5f" stroke-width="1.6">
+        <!-- lever 1: prompt (text) -->
+        <rect x="40" y="30" width="120" height="28" rx="2"/>
+        <path d="M52 44H120M52 50H100" stroke-width="1"/>
+        <!-- lever 2: RAG retrieval arrow into box -->
+        <circle cx="250" cy="44" r="16"/>
+        <path d="M234 44H210M300 44H266" stroke-width="1.4"/>
+        <rect x="300" y="32" width="40" height="24" rx="2"/>
+        <!-- lever 3: fine-tune dial -->
+        <circle cx="440" cy="42" r="16"/>
+        <path d="M440 42L440 30M440 42L450 49" stroke-width="1.4"/>
+        <!-- lever 4: soft-prompt vector -->
+        <rect x="560" y="34" width="14" height="20" rx="1"/>
+        <rect x="580" y="34" width="14" height="20" rx="1"/>
+        <rect x="600" y="34" width="14" height="20" rx="1"/>
+        <path d="M550 44H540M632 44H700" stroke-width="1"/>
+      </g>
+      <g font-family="ui-monospace, Menlo, monospace" font-size="8" fill="#1f3a5f" font-weight="700">
+        <text x="62" y="74">PROMPT</text>
+        <text x="228" y="74">RAG</text>
+        <text x="418" y="74">FINE-TUNE</text>
+        <text x="560" y="74">SOFT PROMPT</text>
+      </g>
+    </svg>
+  </div>
+
+  <main class="cols">
+
+    <section>
+      <h2>The Mental Model</h2>
+      <p>Four levers. Each touches a different part of the stack:</p>
+      <ul>
+        <li><strong>Prompt eng.</strong> - change the input <em>text</em>. Model unchanged.</li>
+        <li><strong>RAG</strong> - change the input <em>context</em>, fetching facts at runtime. Model unchanged.</li>
+        <li><strong>Fine-tune</strong> - change the model <em>weights</em>. Model itself changes.</li>
+        <li><strong>Prompt-tune</strong> - learn a small <em>prompt vector</em>, weights frozen.</li>
+      </ul>
+      <p><strong>The rule:</strong> start with prompt engineering → add RAG for knowledge → fine-tune only when evidence says the other two can't. Real stacks combine all three.</p>
+    </section>
+
+    <section>
+      <h2>1 · Prompt Engineering</h2>
+      <p>Structure the input - role, instructions, few-shot examples, output format, chain-of-thought.</p>
+      <ul>
+        <li>Cheapest, fastest. Hours to days, ~$0.</li>
+        <li>No infra, no training, no data pipeline.</li>
+        <li><strong>Ceiling:</strong> limited to what's already in the weights + what fits the context window.</li>
+        <li><strong>Best for:</strong> behavior, format, tone, reasoning scaffolds, feasibility checks.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2 · RAG</h2>
+      <p>At query time, fetch relevant docs and inject them into the prompt - answer from <strong>your</strong> data.</p>
+      <h3>Pipeline</h3>
+      <pre>chunk → embed → store (vector DB)
+query → embed → search → top-K
+      → rerank → prompt → generate</pre>
+      <h3>What actually matters</h3>
+      <ul>
+        <li>Chunk ~<strong>400-512 tokens, 10-20% overlap</strong> (default).</li>
+        <li><strong>Same embedder</strong> for index AND query - else broken search.</li>
+        <li><strong>Hybrid search</strong> (vector + keyword) is the standard.</li>
+        <li><strong>Rerank</strong> = the production-grade step.</li>
+        <li>Eval with <strong>RAGAS</strong>; golden set 50-100 Q&amp;A.</li>
+      </ul>
+      <p><strong>Best for:</strong> fresh, proprietary, or <strong>citable</strong> knowledge. Update by re-indexing - no retraining.</p>
+    </section>
+
+    <section>
+      <h2>3 · Fine-tuning</h2>
+      <p>Continue training on your examples so <strong>weights shift</strong>. The only lever that changes the model.</p>
+      <table>
+        <tr><th>Method</th><th>Memory / cost</th></tr>
+        <tr><td>Prompt/prefix tune</td><td>Tiny</td></tr>
+        <tr><td>LoRA</td><td>10-20x less than full</td></tr>
+        <tr><td>QLoRA (4-bit)</td><td>7B on a $1.5k GPU</td></tr>
+        <tr><td>Full FT</td><td>7B ≈ 100-120GB VRAM</td></tr>
+      </table>
+      <ul>
+        <li><strong>PEFT</strong> = LoRA/QLoRA/adapters; ~90-95% of full quality.</li>
+        <li>LoRA ~$13 vs full ~$322 for the same run.</li>
+        <li>Earns its cost only at <strong>scale</strong> + deep specialization. Premature before PMF.</li>
+      </ul>
+      <p><strong>Trap:</strong> teaches skill, not facts. Don't fine-tune to inject changing knowledge - it stales and can't cite.</p>
+    </section>
+
+    <section>
+      <h2>4 · Prompt-tuning</h2>
+      <p>Learn continuous <strong>prompt vectors</strong> (not readable text), base weights frozen. Between prompt eng. and full FT.</p>
+      <ul>
+        <li><strong>Prompt tuning</strong> - vectors at the input embedding only.</li>
+        <li><strong>Prefix tuning</strong> - tensors at every transformer block.</li>
+        <li><strong>P-tuning</strong> - vectors anywhere, via a prompt encoder.</li>
+      </ul>
+      <p>With enough training data, beats hand-written prompts while touching almost no params. <span class="tag">≠ prompt engineering</span></p>
+    </section>
+
+    <section>
+      <h2>Decide in 4 Lines</h2>
+      <pre>WORDING / FORMAT / REASONING
+   → Prompt engineering (always start)
+CURRENT / PRIVATE / CITABLE facts
+   → RAG
+Fixed SKILL / STYLE at scale
+   → Fine-tune (LoRA/QLoRA first)
+Have data, want max perf, min ops
+   → Prompt-tuning</pre>
+      <h3>Escalation ladder (cheapest first)</h3>
+      <p>1. Prompt (hrs) → 2. RAG (days, $70-1k/mo)◦ → 3. PEFT/LoRA (small $) → 4. Full FT (months, $$$).</p>
+    </section>
+
+    <section>
+      <h2>At a Glance</h2>
+      <table>
+        <tr><th></th><th>Prompt</th><th>RAG</th><th>Fine-tune</th></tr>
+        <tr><td>Changes model?</td><td>No</td><td>No</td><td><strong>Yes</strong></td></tr>
+        <tr><td>Adds facts?</td><td>No</td><td><strong>Yes</strong></td><td>Poorly</td></tr>
+        <tr><td>Time to value</td><td>Hours</td><td>Days-wks</td><td>Wks-mos</td></tr>
+        <tr><td>Cost</td><td>~$0</td><td>$</td><td>$$-$$$</td></tr>
+        <tr><td>Can cite?</td><td>No</td><td><strong>Yes</strong></td><td>No</td></tr>
+        <tr><td>Update by</td><td>Edit text</td><td>Re-index</td><td>Retrain</td></tr>
+        <tr><td>Ops burden</td><td>None</td><td>Medium</td><td>High</td></tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Don't Get Burned</h2>
+      <ul>
+        <li>✕ "Fine-tune to add company knowledge." → Use RAG.</li>
+        <li>✕ "RAG vs FT is either/or." → They compose.</li>
+        <li>✕ "Fine-tune to look serious." → Burned budget pre-PMF.</li>
+        <li>✕ "Prompt tuning = prompt engineering." → No: vectors vs text.</li>
+        <li>✕ Mismatched embedders → silently broken retrieval.</li>
+      </ul>
+    </section>
+
+    <section class="callout">
+      <div class="label">If you remember one thing</div>
+      <p>Fine-tuning teaches a <strong>skill</strong>; RAG supplies <strong>facts</strong>. Default to prompt + RAG - fine-tune only the few pipelines that prove they need it.</p>
+    </section>
+
+  </main>
+
+  <footer class="sheet">
+    <div class="legend">◦ = <em>from model knowledge, verify</em> · everything else source-backed</div>
+    <div>phoebefu6.github.io/sketch-ideas-with-phoebe · Phoebe Fu</div>
+  </footer>
+</body>
+</html>
