@@ -1,5 +1,6 @@
 # Format taxonomy - display order + labels for the gallery and README.
 # Topic / style / tool values grow freely inside each work's meta.yml.
+# FORMAT = the structural artifact type. STYLE = the visual treatment (lives in meta.yml).
 formats:
   infographic:
     label: Infographic
@@ -7,21 +8,51 @@ formats:
   chart:
     label: Chart
     blurb: One chart, one idea - single-chart experiments, d3.js spirit. Never a dashboard.
+  data-portrait:
+    label: Data portrait
+    blurb: One number or stat as the hero - the two-second rule made visible.
+  diagram:
+    label: Diagram
+    blurb: A system, pipeline, or architecture drawn as designed art, not a boxes-and-arrows dump.
+  timeline:
+    label: Timeline
+    blurb: How a concept, tech, or idea evolved - time as the spine.
+  map:
+    label: Map
+    blurb: A concept as territory - a landscape or transit-map of an idea space.
+  matrix:
+    label: Matrix
+    blurb: A 2x2 or quadrant framework - a decision or trade-off made spatial.
+  isotype:
+    label: Isotype
+    blurb: Quantity shown by repeating identical pictograms - more units, never a bigger icon.
+  annotated:
+    label: Annotated
+    blurb: A chart, screenshot, or artifact with labels pointing straight at the meaning.
+  field-guide:
+    label: Field guide
+    blurb: A naturalist plate cataloguing the "species" of a data/AI thing.
   comic:
     label: Comic
     blurb: Strips that teach a real lesson.
   poster:
     label: Poster
     blurb: One bold visual metaphor for a data/AI idea.
+  typographic:
+    label: Typographic
+    blurb: Type IS the image - words as the whole composition.
   carousel:
     label: Carousel
     blurb: Multi-slide explainers for concepts that need pacing.
+  zine:
+    label: Zine
+    blurb: An editorial spread or mini-page - print-craft applied to one idea.
   card:
     label: Card
     blurb: A compact shareable image with one sharp idea.
   cheatsheet:
     label: Cheatsheet
-    blurb: A dense but readable reference for data/AI people.
+    blurb: One page, 80% of what matters - a topic distilled and designed to keep.
   ironic-graph:
     label: Ironic graph
     blurb: Charts that tell the truth by exaggerating it.
@@ -34,6 +65,3 @@ formats:
   style-study:
     label: Style study
     blurb: The sketchbook - mimicking a beautiful style to learn it.
-  cheatsheet:
-    label: Cheatsheet
-    blurb: One page, 80% of what matters - a topic distilled and designed to keep.
