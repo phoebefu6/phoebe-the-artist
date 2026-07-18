@@ -89,6 +89,28 @@
   },
   "works": [
     {
+      "id": "2026-07-18-ai-landscape-transit-map",
+      "title": "The AI landscape",
+      "date": "2026-07-18",
+      "tool": "html-render",
+      "format": "map",
+      "topic": [
+        "ai",
+        "machine learning",
+        "foundations"
+      ],
+      "style": "transit map (Vignelli)",
+      "inspired_by": "Massimo Vignelli transit maps",
+      "concept": "The field of AI drawn as a metro - six lines you can trace end to end, with interchange stations marking exactly where two disciplines share an idea.",
+      "prompt": "DESIGN-BUILT (not prompted) - hand-authored SVG, rendered headless.\nSTYLE: transit map, Vignelli discipline - cream ground, one bold colour per line, uniform station dots, stadium interchange markers, 45/90 geometry, Helvetica.\nLINES: Machine Learning \u00b7 Deep Learning \u00b7 Language \u00b7 Vision \u00b7 Generative & Agents \u00b7 Data & MLOps (the full-width foundation everything rides on).\nINTERCHANGES (where fields connect): Neural Networks = ML + Deep Learning \u00b7 Embeddings = Deep Learning + Language \u00b7 Transformers = Language + Vision + Generative.\nFull editable SVG source is published alongside this work as sheet.html.\n",
+      "takeaway": "The whole field is one connected network - and the breakthroughs happen at the interchanges (embeddings, transformers), all riding on data. Most people never leave their home station.",
+      "featured": false,
+      "full": "works/2026-07-18-ai-landscape-transit-map/full.png",
+      "thumb": "works/2026-07-18-ai-landscape-transit-map/thumb.webp",
+      "w": 3200,
+      "h": 2240
+    },
+    {
       "id": "2026-07-16-cheatsheet-rag-finetune-prompttune",
       "title": "RAG vs Fine-tuning vs Prompt-tuning",
       "date": "2026-07-16",

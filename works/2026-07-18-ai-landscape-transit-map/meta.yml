@@ -1,0 +1,16 @@
+title: The AI landscape
+date: 2026-07-18
+tool: html-render
+format: map
+topic: [ai, machine learning, foundations]
+style: transit map (Vignelli)
+concept: "The field of AI drawn as a metro - six lines you can trace end to end, with interchange stations marking exactly where two disciplines share an idea."
+takeaway: "The whole field is one connected network - and the breakthroughs happen at the interchanges (embeddings, transformers), all riding on data. Most people never leave their home station."
+prompt: |
+  DESIGN-BUILT (not prompted) - hand-authored SVG, rendered headless.
+  STYLE: transit map, Vignelli discipline - cream ground, one bold colour per line, uniform station dots, stadium interchange markers, 45/90 geometry, Helvetica.
+  LINES: Machine Learning · Deep Learning · Language · Vision · Generative & Agents · Data & MLOps (the full-width foundation everything rides on).
+  INTERCHANGES (where fields connect): Neural Networks = ML + Deep Learning · Embeddings = Deep Learning + Language · Transformers = Language + Vision + Generative.
+  Full editable SVG source is published alongside this work as sheet.html.
+inspired_by: "Massimo Vignelli transit maps"
+featured: false

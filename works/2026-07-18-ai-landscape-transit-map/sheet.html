@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#F5F2EA;}
+  #stage{width:1600px;height:1120px;background:#F5F2EA;}
+  text{font-family:"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+</style>
+</head>
+<body>
+<div id="stage"><svg id="svg" width="1600" height="1120" viewBox="0 0 1600 1120" xmlns="http://www.w3.org/2000/svg"></svg></div>
+<script>
+const INK="#16171B", CREAM="#F5F2EA";
+const X={A:150,B:360,C:570,D:790,E:1010,F:1230,G:1450};
+const LINES=[
+ {key:"ml", name:"MACHINE LEARNING", color:"#D8322A", y:300,
+   st:[["A","Regression"],["B","Classification"],["C","*"],["D","Clustering"],["E","Reinforcement"]]},
+ {key:"dl", name:"DEEP LEARNING", color:"#E8820E", y:420,
+   st:[["C","*"],["D","Backprop"],["E","*"],["F","CNN / RNN"]]},
+ {key:"nlp",name:"LANGUAGE", color:"#2F6FB0", y:540,
+   st:[["B","Tokenization"],["E","*"],["F","*"],["G","RAG"]]},
+ {key:"vis",name:"VISION", color:"#2E9E5B", y:660,
+   st:[["B","Image class."],["D","Detection"],["F","*"],["G","Diffusion"]]},
+ {key:"gen",name:"GENERATIVE & AGENTS", color:"#7C4DA0", y:780,
+   st:[["D","Prompting"],["E","Fine-tuning"],["F","*"],["G","Agents"]]},
+ {key:"data",name:"DATA & MLOPS", color:INK, y:920,
+   st:[["A","Ingestion"],["B","Pipelines"],["C","Feature store"],["D","Warehouse"],["E","Deployment"],["F","Monitoring"],["G","Governance"]]},
+];
+// interchanges: col, top y, bottom y, label
+const IX=[
+ {col:"C", y1:300, y2:420, label:"NEURAL NETWORKS"},
+ {col:"E", y1:420, y2:540, label:"EMBEDDINGS"},
+ {col:"F", y1:540, y2:780, label:"TRANSFORMERS"},
+];
+const ixCols = new Set(IX.map(i=>i.col));
+let s="";
+// helpers
+const esc=t=>t.replace(/&/g,"&amp;");
+// 1) draw lines (thick strokes through station x's)
+for(const L of LINES){
+  const pts=L.st.map(([c])=>`${X[c]},${L.y}`).join(" ");
+  s+=`<polyline points="${pts}" fill="none" stroke="${L.color}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>`;
+}
+// 2) station dots + labels (skip interchange markers "*")
+for(const L of LINES){
+  const below = (L.key==="data");
+  for(const [c,label] of L.st){
+    if(label==="*") continue;
+    const x=X[c], y=L.y;
+    s+=`<circle cx="${x}" cy="${y}" r="10" fill="${CREAM}" stroke="${L.color}" stroke-width="5"/>`;
+    const ly = below ? y+34 : y-26;
+    s+=`<text x="${x}" y="${ly}" text-anchor="middle" font-size="19" font-weight="600" fill="#2b2b30" letter-spacing="0.3">${esc(label)}</text>`;
+  }
+}
+// 3) interchange capsules (drawn on top) + bold labels
+for(const i of IX){
+  const x=X[i.col];
+  const top=i.y1-16, h=(i.y2-i.y1)+32;
+  s+=`<rect x="${x-16}" y="${top}" width="32" height="${h}" rx="16" fill="${CREAM}" stroke="${INK}" stroke-width="5"/>`;
+  s+=`<text x="${x}" y="${i.y1-40}" text-anchor="middle" font-size="22" font-weight="800" fill="${INK}" letter-spacing="0.4">${esc(i.label)}</text>`;
+}
+// 4) title block
+s+=`<text x="150" y="118" font-size="70" font-weight="800" fill="${INK}" letter-spacing="-1">THE AI LANDSCAPE</text>`;
+s+=`<text x="153" y="162" font-size="27" font-weight="500" fill="#5a5a60" letter-spacing="2">A TRANSIT MAP OF THE FIELD</text>`;
+s+=`<text x="1450" y="116" text-anchor="end" font-size="32" font-weight="700" fill="#D8322A" font-style="italic">Most people never</text>`;
+s+=`<text x="1450" y="158" text-anchor="end" font-size="32" font-weight="700" fill="#D8322A" font-style="italic">leave one station.</text>`;
+// title rule
+s+=`<line x1="150" y1="192" x2="1450" y2="192" stroke="${INK}" stroke-width="2"/>`;
+// 5) legend strip (bottom)
+const LY=1012;
+let lx=150;
+for(const L of LINES){
+  s+=`<rect x="${lx}" y="${LY-15}" width="38" height="11" rx="5.5" fill="${L.color}"/>`;
+  s+=`<text x="${lx+48}" y="${LY-2}" font-size="18" font-weight="700" fill="#2b2b30" letter-spacing="0.3">${esc(L.name)}</text>`;
+  lx += 48 + L.name.length*10.3 + 42;
+}
+// interchange key
+s+=`<rect x="150" y="${LY+24}" width="28" height="28" rx="14" fill="${CREAM}" stroke="${INK}" stroke-width="5"/>`;
+s+=`<text x="192" y="${LY+44}" font-size="18" font-weight="600" fill="#5a5a60">interchange - where two fields connect and ideas transfer</text>`;
+// 6) footer
+s+=`<text x="150" y="1094" font-size="16" font-weight="600" fill="#8a8a90" letter-spacing="0.5">WORTH A THOUSAND WORDS  ·  PHOEBE FU</text>`;
+s+=`<text x="1450" y="1094" text-anchor="end" font-size="16" font-weight="500" fill="#8a8a90">phoebefu6.github.io/sketch-ideas-with-phoebe</text>`;
+document.getElementById("svg").innerHTML=s;
+</script>
+</body>
+</html>
