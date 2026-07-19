@@ -28,6 +28,17 @@ body {
   font: var(--fs-base)/var(--lh) var(--font-body);
   padding: 24px 26px 18px; display: flex; flex-direction: column;
 }
+@media screen {
+  html {
+    width: auto;
+    min-width: 794px;
+    min-height: 1123px;
+    overflow: auto;
+  }
+  body {
+    overflow: visible;
+  }
+}
 header.sheet { display: flex; gap: 16px; align-items: flex-end; border-bottom: 3px solid var(--ink); padding-bottom: 9px; margin-bottom: var(--gap); }
 header.sheet .titleblock { flex: 1; }
 header.sheet .kicker { font: 700 8.5px/1 var(--font-body); letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }

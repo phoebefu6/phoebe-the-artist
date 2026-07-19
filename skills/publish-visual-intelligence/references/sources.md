@@ -25,6 +25,12 @@ For each video capture:
 
 Do not use the public subscriptions page while signed out as a substitute for the personalized feed. If sign-in is missing, report the block and do not guess subscriptions.
 
+## Visual inspiration
+
+- Midlibrary Art Styles: `https://midlibrary.io/art-styles`
+
+Use Midlibrary for visual idea-sparking and art-direction vocabulary: medium, era, composition, texture, palette, lighting, printing method, and mood. Translate references into safe style mechanics. Do not copy an exact artist, brand, copyrighted composition, or living-artist identity.
+
 ## Future sources
 
 Add RSS, websites, newsletters, Slack channels, podcasts, and papers as new Sourcebase rows only after the user supplies or authorizes each source. Keep credentials and private source details out of public repository files.

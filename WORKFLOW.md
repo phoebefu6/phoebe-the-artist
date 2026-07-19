@@ -52,9 +52,13 @@ works/YYYY-MM-DD-short-slug/
 
 Run `python3 scripts/build.py` before publishing. The script creates `thumb.webp`, updates `data/works.js`, updates `data/works.json`, refreshes `CATALOG.md`, and rewrites the README gallery.
 
+If a work includes a standalone subpage such as `sheet.html`, keep `html` and `body` scrollable on screen. Fixed poster dimensions should live inside a stage/sheet wrapper, not by locking the viewport with `overflow: hidden`.
+
 ## Prompt Safety
 
 Mimic style mechanics, not identity. Describe observable design choices instead of copying a living artist, brand system, exact character, exact poster, or copyrighted composition.
+
+For visual idea-sparking, browse [Midlibrary Art Styles](https://midlibrary.io/art-styles) to expand the vocabulary of possible art directions. Use it to identify mechanics like medium, era, composition, texture, palette, lighting, printing method, and mood. Do not copy an exact artist, brand, copyrighted composition, or living-artist identity.
 
 Good style extraction focuses on:
 
