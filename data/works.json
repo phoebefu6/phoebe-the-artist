@@ -89,6 +89,29 @@
   },
   "works": [
     {
+      "id": "2026-07-19-average-customer-myth",
+      "title": "The average customer is a myth",
+      "date": "2026-07-19",
+      "tool": "chatgpt",
+      "format": "poster",
+      "topic": [
+        "customer analytics",
+        "metrics",
+        "distribution",
+        "profitability"
+      ],
+      "style": "luxury editorial surrealism",
+      "inspired_by": "",
+      "concept": "Averages can turn many incompatible customer realities into one fake persona, hiding where margin, churn, support cost, and discounting actually live.",
+      "prompt": "Create an unforgettable portrait 4:5 editorial poster titled exactly \"THE AVERAGE CUSTOMER IS A MYTH\". Show a pristine museum gallery where a beautiful white marble statue labeled \"AVERAGE CUSTOMER\" is cracking apart. Inside the cracks are not bones or machinery but hundreds of tiny mismatched customer receipts, invoices, support tickets, discount tags, churn notes, premium badges, and margin slips spilling out in different colors and sizes. One elegant executive stands in front of the statue with a confident presentation card reading exactly \"AVG +8%\", unaware that the statue is hollow and impossible. The visual message: the average customer is a fake artifact assembled from customers who do not behave alike. Premium museum editorial set, quiet off-white walls, soft gallery lighting, expensive magazine-cover art direction, strong negative space. Luxury editorial surrealism, sculptural realism mixed with crisp graphic data ephemera, publication-grade typography, subtle paper grain, refined not flashy. Centered statue as hero, title at top with clean generous margin, executive small at lower left for scale, fragments spilling diagonally to create motion. Warm ivory, charcoal ink, marble white, muted teal shadows, restrained red for loss notes, small green accent on AVG card. Render exactly and clearly: \"THE AVERAGE CUSTOMER IS A MYTH\"; \"AVERAGE CUSTOMER\"; \"AVG +8%\". No other text. No visible charts, histograms, dashboards, robots, brains, network nodes, generic AI glow, stock corporate illustration, cluttered labels, extra text, watermark, living artist imitation, or brand mimicry.",
+      "takeaway": "The average customer is a myth - decide on the distribution, not the mean.",
+      "featured": true,
+      "full": "works/2026-07-19-average-customer-myth/full.png",
+      "thumb": "works/2026-07-19-average-customer-myth/thumb.webp",
+      "w": 1003,
+      "h": 1568
+    },
+    {
       "id": "2026-07-18-strawberry-tokens",
       "title": "The model can't spell strawberry",
       "date": "2026-07-18",
